@@ -1,5 +1,7 @@
 # sentinelx-go
 
+**Patent pending.**
+
 Whether it's an AI agent, a bank transfer, or a power grid, execution is permanent.
 
 `sentinelx-go` checks actions at the commit boundary, before they execute. When placed in the commit path, decisions are made server-side and every decision returns a signed receipt.
