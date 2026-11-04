@@ -1,5 +1,5 @@
-// Package sentinelx provides a Go client for the SentinelX Enforcement API.
-// Pre-execution enforcement at the commit boundary.
+// Package sentinelx provides a Go client for the SentinelX API.
+// Pre-execution action checks at the commit boundary.
 // https://sentinelx.ai
 package sentinelx
 
@@ -19,7 +19,7 @@ const (
 	Version        = "0.1.0"
 )
 
-// Client is the SentinelX enforcement client.
+// Client is the SentinelX client.
 type Client struct {
 	apiKey  string
 	baseURL string
@@ -58,7 +58,7 @@ type EnforceRequest struct {
 	Context map[string]any `json:"context"`
 }
 
-// Violation is a single invariant violation.
+// Violation is a single violation.
 type Violation struct {
 	Primitive  string `json:"primitive"`
 	Code       string `json:"code"`
@@ -66,7 +66,7 @@ type Violation struct {
 	Message    string `json:"message"`
 }
 
-// Receipt is returned on every enforcement decision.
+// Receipt is returned on every decision.
 type Receipt struct {
 	Verdict        string      `json:"verdict"`
 	Summary        string      `json:"summary"`

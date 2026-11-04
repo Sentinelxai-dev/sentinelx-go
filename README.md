@@ -1,8 +1,8 @@
 # sentinelx-go
 
-Whether it's an AI agent, a bank transfer, or a power grid — execution is permanent.
+Whether it's an AI agent, a bank transfer, or a power grid, execution is permanent.
 
-`sentinelx-go` enforces at the commit boundary. Before the action executes. Server-side. Unbypassable. Cryptographic receipt on every decision.
+`sentinelx-go` checks actions at the commit boundary, before they execute. When placed in the commit path, decisions are made server-side and every decision returns a signed receipt.
 
 [![license](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 [![go version](https://img.shields.io/badge/go-1.21+-00ADD8)](https://golang.org)
@@ -76,12 +76,12 @@ fmt.Println(receipt.Verdict) // "ADMISSIBLE" or "INADMISSIBLE"
 
 ## How It Works
 
-SentinelX sits at the commit boundary between your system and execution. Before any irreversible action fires, the enforcement engine evaluates it against invariant constraints and returns a deterministic verdict with a provenance receipt.
+SentinelX sits at the commit boundary between your system and execution. Before an irreversible action is committed, the service evaluates it and returns a verdict with a receipt.
 
-- **ADMISSIBLE** → receipt returned, action may proceed
-- **INADMISSIBLE** → `AdmissibilityError` returned, nothing executes, receipt sealed
+- **ADMISSIBLE**: receipt returned, action may proceed
+- **INADMISSIBLE**: `AdmissibilityError` returned; when placed in the commit path, the action is not committed. Receipt returned.
 
-The enforcement decision is made server-side. It cannot be bypassed client-side.
+The commit decision is made server-side, not in the client library.
 
 ## Domain Coverage
 
@@ -111,65 +111,6 @@ Or visit [sentinelx.ai](https://sentinelx.ai).
 
 ## License
 
-Apache-2.0# sentinelx-go
-
-Go client for the [SentinelX Enforcement API](https://sentinelx.ai).
-
-Pre-execution enforcement at the commit boundary. Deterministic. Server-side. No bypass.
-
-## Install
-
-```bash
-go get github.com/xinfra-ai/sentinelx-go
-```
-
-## Quick Start
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "log"
-
-    sentinelx "github.com/xinfra-ai/sentinelx-go"
-)
-
-func main() {
-    sx := sentinelx.New("YOUR_API_KEY")
-
-    receipt, err := sx.Enforce(context.Background(), "ai.agent.action.execute", map[string]any{
-        "agent_id":               "agent-001",
-        "action_type":            "file.write",
-        "human_in_loop_required": true,
-        "human_in_loop":          false,
-        "action_within_scope":    true,
-        "action_logged":          true,
-    })
-
-    if err != nil {
-        if ae, ok := err.(*sentinelx.AdmissibilityError); ok {
-            fmt.Println("INADMISSIBLE:", ae.Receipt.Summary)
-            fmt.Println("Receipt hash:", ae.Receipt.ReceiptHash)
-            return
-        }
-        log.Fatal(err)
-    }
-
-    fmt.Println("ADMISSIBLE")
-    fmt.Println("Receipt hash:", receipt.ReceiptHash)
-}
-```
-
-## Get an API Key
-
-```bash
-curl -X POST https://enforce.sentinelx.ai/generate-key
-```
-
-Or visit [sentinelx.ai](https://sentinelx.ai).
-
-## License
-
 Apache-2.0
+
+Patent pending. SentinelXAI, Inc.

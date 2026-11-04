@@ -32,5 +32,5 @@ func TestEnforceInadmissible(t *testing.T) {
 		t.Errorf("expected INADMISSIBLE, got %s", ae.Receipt.Verdict)
 	}
 
-	t.Logf("✅ INADMISSIBLE — constraint: %v, code: %v", ae.Receipt.Constraint, ae.Receipt.ViolationCode)
+	t.Logf("✅ INADMISSIBLE: constraint: %v, code: %v", ae.Receipt.Constraint, ae.Receipt.ViolationCode)
 }
