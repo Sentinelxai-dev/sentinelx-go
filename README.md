@@ -1,5 +1,7 @@
 # sentinelx-go
 
+> **Note:** SentinelX v3 is coming soon. This SDK continues to work with the current API at https://enforce.sentinelx.ai.
+
 Whether it's an AI agent, a bank transfer, or a power grid — execution is permanent.
 
 `sentinelx-go` enforces at the commit boundary. Before the action executes. Server-side. Unbypassable. Cryptographic receipt on every decision.
@@ -10,7 +12,7 @@ Whether it's an AI agent, a bank transfer, or a power grid — execution is perm
 ## Install
 
 ```bash
-go get github.com/xinfra-ai/sentinelx-go
+go get github.com/Sentinelxai-dev/sentinelx-go
 ```
 
 ## Quick Start
@@ -23,7 +25,7 @@ import (
     "fmt"
     "log"
 
-    sentinelx "github.com/xinfra-ai/sentinelx-go"
+    sentinelx "github.com/Sentinelxai-dev/sentinelx-go"
 )
 
 func main() {
@@ -120,7 +122,7 @@ Pre-execution enforcement at the commit boundary. Deterministic. Server-side. No
 ## Install
 
 ```bash
-go get github.com/xinfra-ai/sentinelx-go
+go get github.com/Sentinelxai-dev/sentinelx-go
 ```
 
 ## Quick Start
@@ -133,7 +135,7 @@ import (
     "fmt"
     "log"
 
-    sentinelx "github.com/xinfra-ai/sentinelx-go"
+    sentinelx "github.com/Sentinelxai-dev/sentinelx-go"
 )
 
 func main() {

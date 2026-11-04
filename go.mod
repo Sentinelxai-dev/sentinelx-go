@@ -1,3 +1,3 @@
-module github.com/xinfra-ai/sentinelx-go
+module github.com/Sentinelxai-dev/sentinelx-go
 
 go 1.21

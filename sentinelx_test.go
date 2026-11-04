@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	sentinelx "github.com/xinfra-ai/sentinelx-go"
+	sentinelx "github.com/Sentinelxai-dev/sentinelx-go"
 )
 
 func TestEnforceInadmissible(t *testing.T) {
